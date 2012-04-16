@@ -1,8 +1,8 @@
-#appname: osp01
-#publisher: ryoutakatou
-#url: http://
-#image: appicon.png
-#appid: com.outersweellproject.osp01
-#desc: undefined
-#type: ipad
-#guid: 808be41e-4332-4bda-ab87-f25297e3f959
+#appname:osp01
+#publisher:ryoutakatou
+#url:http://
+#image:appicon.png
+#appid:com.outerswellproject.osp01
+#desc:not specified
+#type:ipad
+#guid:808be41e-4332-4bda-ab87-f25297e3f959
