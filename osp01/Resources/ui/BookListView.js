@@ -5,7 +5,7 @@ function BookListView() {
 	self.hide();
 	
 	// dao
-	var bookDao = require('dao/BookDao');
+	var bookDao = require('dao/bookDao');
 	// dbから取得
 	var data = bookDao.selectBooks();
 	// 表示用一覧作成

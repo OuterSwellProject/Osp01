@@ -7,9 +7,9 @@ function BookView() {
 	// dao
 	var bookDao = require('dao/BookDao');
 	// dbから取得
-	var data = bookDao.selectBook(bookId);
+	//var data = bookDao.selectBook(bookId);
 	
-	// 
+	self.add(Ti.UI.createLabel({text:'aaaaaaaaaaaaaaaaaaa'}));
 	
 	self.show();
 	
