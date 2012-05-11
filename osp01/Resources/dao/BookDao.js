@@ -6,9 +6,9 @@ var logger = require('util/log');
 
 exports.selectBooks = function() {
 	// joli.jsのDBコネクションオブジェクトを取得
-	var db = db.get();
+	var con = db.get();
 	
-	var model = new db.model({  
+	var model = new con.model({  
   	table:    'book',
   	columns:  {
     	id:                 'INTEGER',
@@ -18,7 +18,7 @@ exports.selectBooks = function() {
   		}
 	});
 	
-	db.models.initialize(); 
+	con.models.initialize(); 
 	
 // var data = new Array(
     // { title: 'カンボジア旅行', departure: '2012-04-01',comeback:'2012-04-10' },
@@ -38,8 +38,8 @@ exports.selectBooks = function() {
 	
 	
 	// クエリ作成
-	var query = new db.query()
-		.select('book.*')
+	var query = new con.query()
+		.select('book.title, DATE(book.departure) as departure, DATE(book.comeback) as comeback')
 		.from('book')
 		.order(['book.id asc']);
 	

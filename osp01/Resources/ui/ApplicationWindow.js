@@ -2,6 +2,7 @@
 function ApplicationWindow() {
 	
 	var BookListView = require("ui/BookListView");
+	var BookView = require("ui/BookView");
 	var Toolbar = require("ui/Toolbar");
 	
 	// create window
@@ -14,6 +15,10 @@ function ApplicationWindow() {
 	self.add(bookListView);
 	
 	var toolbar = new Toolbar();
+	toolbar.addEventListener('bookAdding', function(e) {
+		var bookView = new BookView();
+		
+	});
 	self.add(toolbar);
 	
 	

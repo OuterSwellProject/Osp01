@@ -4,32 +4,34 @@ function BookListView() {
 	var self = Ti.UI.createView();
 	self.hide();
 	
-	var label = Ti.UI.createLabel({
-		color:'#000000',
-		text:'book list view',
-		height:'auto',
-		width:'auto'
-	});
-	self.add(label);
-	
-	label.addEventListener('click', function(e) {
-		alert(e.source.text);
-	});
-	
+	// dao
 	var bookDao = require('dao/BookDao');
-	
+	// dbから取得
 	var data = bookDao.selectBooks();
-
+	// 表示用一覧作成
 	var rowData = [];
 	for (var i = 0; i < data.length; i++) {
-		var row = Ti.UI.createTableViewRow();
+		var row = Ti.UI.createTableViewRow({
+			height:100
+		});
 		
-		row.add(Ti.UI.createLabel({text:data[i].title, left:0}));
-		row.add(Ti.UI.createLabel({text:data[i].departure, left:100}));
-		row.add(Ti.UI.createLabel({text:data[i].comeback, left:200}));
+		row.add(Ti.UI.createLabel({text:data[i].title, left:100, top:0}));
+		row.add(Ti.UI.createLabel({text:data[i].departure + ' 〜 ' + data[i].comeback, left:100, top:50}));
+		
+		// thumbnail
+    	var thumbnail = Ti.UI.createView({
+        	backgroundImage:'image/user.png', // TODO サンプル
+        	top:10,
+        	left:10,
+        	width:80,
+        	height:80
+    	});
+    	thumbnail.rowNum = i;
+    	row.add(thumbnail);
+		
 		rowData.push(row);
 	}
-	
+	// テーブルビュー作成
 	var table = Ti.UI.createTableView({
 		data : rowData,
 		rowHeight : 80
