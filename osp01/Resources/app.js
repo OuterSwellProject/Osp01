@@ -1,8 +1,8 @@
 (function() {
 	
 	// ウィンドウ
- 	var BookListWindow = require('ui/BookListWindow');
- 	var BookDetailWindow = require('ui/BookDetailWindow');
+ 	var BookListWindow = require('ui/bookList/window');
+ 	var BookDetailWindow = require('ui/bookDetail/window');
  	
  	var AppTabGroup = require('ui/AppTabGroup');
  	// ウィンドウ一覧をあらかじめ設定（最初に定義するウィンドウが最初に表示される画面となる）

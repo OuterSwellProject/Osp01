@@ -1,8 +1,8 @@
 // ブック一覧ウィンドウ
 function BookListWindow(windowTitle) {
 	
-	var BookListView = require("ui/BookListView");
-	var Toolbar = require("ui/Toolbar");
+	var BookListView = require("ui/bookList/view");
+	var BookListToolbar = require("ui/bookList/toolbar");
 	
 	// ウィンドウ生成
 	var self = Ti.UI.createWindow({
@@ -24,7 +24,7 @@ function BookListWindow(windowTitle) {
 	});
 	
 	// ツールバー生成
-	var toolbar = new Toolbar();
+	var toolbar = new BookListToolbar();
 	self.add(toolbar);
 	
 	toolbar.addEventListener('bookAdding', function(e) {

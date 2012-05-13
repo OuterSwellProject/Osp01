@@ -1,5 +1,5 @@
 
-function Toolbar() {
+function BookListToolbar() {
 	
 	
 	// 追加ボタン
@@ -52,4 +52,4 @@ function Toolbar() {
 
 
 // export
-module.exports = Toolbar;
+module.exports = BookListToolbar;
