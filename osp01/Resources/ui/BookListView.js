@@ -12,6 +12,7 @@ function BookListView() {
 	var rowData = [];
 	for (var i = 0; i < data.length; i++) {
 		var row = Ti.UI.createTableViewRow({
+			id:data[i].id,
 			height:100
 		});
 		
@@ -35,6 +36,11 @@ function BookListView() {
 	var table = Ti.UI.createTableView({
 		data : rowData,
 		rowHeight : 80
+	});
+	
+	// テーブルビュー選択時のイベント定義
+	table.addEventListener('click', function(e){
+		self.fireEvent('tableSelected',{bookId:e.row.id});
 	});
 	
 	self.add(table);

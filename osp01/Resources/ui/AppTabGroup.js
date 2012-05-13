@@ -20,7 +20,7 @@ function AppTabGroup() {
 	}
 
 	//　タブ切り替えのイベント追加
-	self.addEventListener('change', function(e) {
+	Ti.App.addEventListener('window:change', function(e) {
 		var tabs = self.getTabs();
 		for (var i = 0; i < tabs.length;i++) {
 			// 指定titleidで検索する

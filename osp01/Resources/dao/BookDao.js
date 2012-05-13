@@ -4,11 +4,7 @@ var db = require('dao/db');
 
 var logger = require('util/log');
 
-exports.selectBooks = function() {
-	// joli.jsのDBコネクションオブジェクトを取得
-	var con = db.get();
-	
-	var model = new con.model({  
+var bookModel = {  
   	table:    'book',
   	columns:  {
     	id:                 'INTEGER',
@@ -16,7 +12,45 @@ exports.selectBooks = function() {
     	departure:          'DATE',
     	comeback:        	'DATE'
   		}
-	});
+	}
+
+
+exports.selectBook = function(bookId) {
+	// joli.jsのDBコネクションオブジェクトを取得
+	var con = db.get();
+	
+	var model = new con.model(bookModel);
+	
+	con.models.initialize(); 
+	
+	// クエリ作成
+	var query = new con.query()
+		.select('book.id, book.title, DATE(book.departure) as departure, DATE(book.comeback) as comeback')
+		.from('book')
+		.where('book.id = ?', bookId);
+		
+	// 実行
+	var results = query.execute();
+	
+	// 形式変換
+	if (results.length <= 0) {
+		return null;
+	} else {
+		return {
+			id: results[0].get('id'),
+			title: results[0].get('title'),
+			departure: results[0].get('departure'),
+			comeback: results[0].get('comeback')
+		};	
+	}
+
+}
+
+exports.selectBooks = function() {
+	// joli.jsのDBコネクションオブジェクトを取得
+	var con = db.get();
+	
+	var model = new con.model(bookModel);
 	
 	con.models.initialize(); 
 	
@@ -39,7 +73,7 @@ exports.selectBooks = function() {
 	
 	// クエリ作成
 	var query = new con.query()
-		.select('book.title, DATE(book.departure) as departure, DATE(book.comeback) as comeback')
+		.select('book.id, book.title, DATE(book.departure) as departure, DATE(book.comeback) as comeback')
 		.from('book')
 		.order(['book.id asc']);
 	
@@ -50,9 +84,10 @@ exports.selectBooks = function() {
 	var data = new Array();
 	for (i = 0; i < results.length; i++) {
 		data.push({
+			id: results[i].get('id'),
 			title: results[i].get('title'),
 			departure: results[i].get('departure'),
-			comeback: results[i].get('comeback'),
+			comeback: results[i].get('comeback')
 		}); 
     }
 

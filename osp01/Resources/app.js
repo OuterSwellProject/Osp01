@@ -1,6 +1,3 @@
-// グローバルオブジェクト
-var Globals = {};
-
 (function() {
 	
 	// ウィンドウ
@@ -9,7 +6,7 @@ var Globals = {};
  	
  	var AppTabGroup = require('ui/AppTabGroup');
  	// ウィンドウ一覧をあらかじめ設定（最初に定義するウィンドウが最初に表示される画面となる）
-	Globals.tabs = new AppTabGroup({
+	var tabs = new AppTabGroup({
 		titleid:'bookList',
 		window: new BookListWindow('ブック一覧')
 	},{
@@ -17,6 +14,5 @@ var Globals = {};
 		window: new BookDetailWindow('ブック詳細')	
 	});
 	
-	// 画面表示
-	Globals.tabs.open();
+	tabs.open();
 })();

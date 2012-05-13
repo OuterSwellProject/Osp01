@@ -4,12 +4,15 @@ function BookView() {
 	var self = Ti.UI.createView();
 	self.hide();
 	
-	// dao
-	var bookDao = require('dao/BookDao');
-	// dbから取得
-	//var data = bookDao.selectBook(bookId);
+	var bookTitle = Ti.UI.createLabel({text:'追加'});
 	
-	self.add(Ti.UI.createLabel({text:'aaaaaaaaaaaaaaaaaaa'}));
+	self.add(bookTitle);
+	
+	// 画面更新のイベント定義
+	Ti.App.addEventListener('bookDetail:display',function(e){
+		var book = getBookData(e.bookId);
+		bookTitle.text = book.title;
+	});
 	
 	self.show();
 	
@@ -18,3 +21,11 @@ function BookView() {
 
 // export
 module.exports = BookView;
+
+
+function getBookData(bookId) {
+	// dao
+	var bookDao = require('dao/BookDao');
+	// dbから取得
+	return bookDao.selectBook(bookId);
+}

@@ -15,7 +15,7 @@ function BookDetailWindow(windowTitle) {
 	
 	bookView.addEventListener('click', function(e) {
 		// ブック一覧ウィンドウを開く
-		Globals.tabs.fireEvent('change',{titleid:'bookList'});
+		Ti.App.fireEvent('window:change',{titleid:'bookList'});
 	});	
 	
 	return self;
