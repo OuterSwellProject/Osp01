@@ -14,7 +14,7 @@ var bookModel = {
   		}
 	}
 
-
+// PK検索
 exports.selectBook = function(bookId) {
 	// joli.jsのDBコネクションオブジェクトを取得
 	var con = db.get();
@@ -46,6 +46,7 @@ exports.selectBook = function(bookId) {
 
 }
 
+// 一覧取得
 exports.selectBooks = function() {
 	// joli.jsのDBコネクションオブジェクトを取得
 	var con = db.get();

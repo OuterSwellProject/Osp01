@@ -19,13 +19,14 @@ function AppTabGroup() {
 		self.addTab(tab);
 	}
 
-	//　タブ切り替えのイベント追加
+	//　ウィンドウ切り替えのイベント追加
 	Ti.App.addEventListener('window:change', function(e) {
 		var tabs = self.getTabs();
 		for (var i = 0; i < tabs.length;i++) {
 			// 指定titleidで検索する
 			if(e.titleid == tabs[i].titleid) {
-				self.setActiveTab(tabs[i]);
+				// アニメーションのためにopenで開く
+				self.activeTab.open(tabs[i].window);
 			}
 		}
 	});
