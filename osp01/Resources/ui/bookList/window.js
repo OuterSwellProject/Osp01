@@ -28,8 +28,10 @@ function BookListWindow(windowTitle) {
 	self.add(toolbar);
 	
 	toolbar.addEventListener('bookAdding', function(e) {
+		Ti.App.fireEvent('bookAdd:display');
+		self.close();		
 		// ブック詳細ウィンドウを開く
-		Ti.App.fireEvent('window:change',{titleid:'bookDetail'});
+		Ti.App.fireEvent('window:change',{titleid:'bookAdd'});
 	});	
 	
 	return self;

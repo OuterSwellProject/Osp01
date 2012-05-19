@@ -1,7 +1,7 @@
 // ブック詳細ウィンドウ
 function BookDetailWindow(windowTitle) {
 	
-	var BookView = require("ui/bookDetail/view");
+	var BookDetailView = require("ui/bookDetail/view");
 	
 	// ウィンドウ生成
 	var self = Ti.UI.createWindow({
@@ -10,13 +10,8 @@ function BookDetailWindow(windowTitle) {
 	});
 	
 	// ブック詳細ビュー追加 
-	var bookView = new BookView();
-	self.add(bookView);
-	
-	bookView.addEventListener('click', function(e) {
-		// ブック一覧ウィンドウを開く
-		Ti.App.fireEvent('window:change',{titleid:'bookList'});
-	});	
+	var bookDetailView = new BookDetailView();
+	self.add(bookDetailView);
 	
 	return self;
 }

@@ -1,5 +1,5 @@
-// book view class
-function BookView() {
+// book detail view class
+function BookDetailView() {
 	
 	var self = Ti.UI.createView();
 	self.hide();
@@ -26,14 +26,14 @@ function BookView() {
 		bookTitle.text = book.title;
 		bookPeriod.text = book.departure + ' 〜 ' + book.comeback;
 	});
-	
+		
 	self.show();
 	
 	return self;
 }
 
 // export
-module.exports = BookView;
+module.exports = BookDetailView;
 
 
 function getBookData(bookId) {
